@@ -6,7 +6,8 @@ import {
   Terminal, Database, Globe, Cpu, Eye, Trophy, Languages, Palette,
   Send, MapPin, ChevronDown,
 } from "lucide-react";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import studentPhoto from "@/assets/student-photo.png.asset.json";
+const heroPortrait = studentPhoto.url;
 import resumeAsset from "@/assets/resume.png.asset.json";
 import { ParticleField } from "@/components/ParticleField";
 
