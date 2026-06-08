@@ -213,12 +213,17 @@ function About() {
         <div className="glass grid gap-8 rounded-3xl p-8 md:p-12 lg:grid-cols-[1.2fr_1fr]">
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              I am pursuing <span className="text-foreground font-semibold">B.E Computer Science and Engineering</span> at
-              Sri Ramakrishna Institute of Technology, Coimbatore.
+              I am <span className="text-foreground font-semibold">Kavibharathi S</span>, a Computer Science and Engineering student at
+              Sri Ramakrishna Institute of Technology, Coimbatore. Driven by a passion for building secure and scalable digital solutions, I specialize in the intersection of <span className="text-foreground font-semibold">Cyber Security, Software Development, and Networking</span>.
             </p>
             <p>
-              I enjoy solving real-world problems and building innovative projects that create
-              meaningful impact — bridging secure systems with thoughtful software.
+              My professional foundation is built on diverse hands-on internships spanning Cyber Security, Python Development, and Full-Stack Web Technologies. These experiences, coupled with my active participation in hackathons and impactful projects, have honed my ability to solve complex problems under pressure. Currently, I am deepening my expertise in Ethical Hacking, Network Security, and Full-Stack Development.
+            </p>
+            <p>
+              Beyond the keyboard, I am a lifelong learner who values discipline and creativity. Whether I am competing in Throwball, practicing Pencil Art, or sharpening my focus through Typewriting and puzzle-solving, I bring the same level of persistence and attention to detail to my technical work.
+            </p>
+            <p className="text-foreground font-medium italic">
+              "Securing systems, solving problems, and building the future through technology."
             </p>
             <div className="flex flex-wrap gap-2 pt-2">
               {interests.map((i) => (
