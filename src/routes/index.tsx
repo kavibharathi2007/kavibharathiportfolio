@@ -52,7 +52,6 @@ const internships = [
   { role: "Cyber Security Intern", org: "Security Track", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection." },
   { role: "Web Development Intern", org: "SkillCraft Technologies", desc: "Built To-Do List and Resume Generator projects using HTML and CSS." },
   { role: "Python Developer Intern", org: "ShadowFox", desc: "Python development and practical project implementation." },
-  { role: "Front-End Development Intern", org: "Remote", desc: "Developed responsive web pages using HTML, CSS, and JavaScript concepts." },
 ];
 
 const projects = [
