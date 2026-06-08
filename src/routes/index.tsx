@@ -98,7 +98,6 @@ function Portfolio() {
       <Experience />
       <Projects />
       <Achievements />
-      <Extras />
       <Contact />
       <Footer />
     </div>
