@@ -7,6 +7,7 @@ import {
   Send, MapPin, ChevronDown,
 } from "lucide-react";
 import heroPortrait from "@/assets/hero-portrait.jpg";
+import resumeAsset from "@/assets/resume.png.asset.json";
 import { ParticleField } from "@/components/ParticleField";
 
 export const Route = createFileRoute("/")({
@@ -149,7 +150,7 @@ function Hero() {
             innovative solutions and continuously learning emerging technologies.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
-            <a href="#" className="btn-cyber"><Download className="size-4" /> Download Resume</a>
+            <a href={resumeAsset.url} download="Kavibharathi-S-Resume.png" target="_blank" rel="noopener noreferrer" className="btn-cyber"><Download className="size-4" /> Download Resume</a>
             <a href="#projects" className="btn-ghost-cyber">View Projects <ArrowRight className="size-4" /></a>
             <a href="#contact" className="btn-ghost-cyber">Contact Me</a>
           </div>
