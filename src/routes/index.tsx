@@ -7,6 +7,7 @@ import {
   Send, MapPin, ChevronDown,
 } from "lucide-react";
 import heroPortrait from "@/assets/hero-portrait.jpg";
+import resumeAsset from "@/assets/resume.png.asset.json";
 import { ParticleField } from "@/components/ParticleField";
 
 export const Route = createFileRoute("/")({
