@@ -27,12 +27,12 @@ export const Route = createFileRoute("/")({
 });
 
 const skills = [
-  { icon: Terminal, title: "Programming", items: ["Python", "C", "SQL"] },
-  { icon: Shield, title: "Cyber Security", items: ["Network Security", "Secure Coding", "Vulnerability Assessment", "Security Fundamentals"] },
-  { icon: Globe, title: "Web Development", items: ["HTML5", "CSS3", "Responsive Design"] },
-  { icon: Code2, title: "Tools", items: ["GitHub", "VS Code", "Canva"] },
-  { icon: Cpu, title: "Core Concepts", items: ["OOPs", "DBMS", "Data Structures", "Computer Networks", "SDLC"] },
-  { icon: Network, title: "Focus Areas", items: ["Ethical Hacking", "Python Dev", "Front-End", "Networking"] },
+  { icon: Terminal, title: "Programming", items: ["Python", "C", "SQL"], color: "var(--rb-red)", anim: "animate-icon-bounce" },
+  { icon: Shield, title: "Cyber Security", items: ["Network Security", "Secure Coding", "Vulnerability Assessment", "Security Fundamentals"], color: "var(--rb-orange)", anim: "animate-icon-pop" },
+  { icon: Globe, title: "Web Development", items: ["HTML5", "CSS3", "Responsive Design"], color: "var(--rb-yellow)", anim: "animate-icon-spin-slow" },
+  { icon: Code2, title: "Tools", items: ["GitHub", "VS Code", "Canva"], color: "var(--rb-green)", anim: "animate-icon-bounce" },
+  { icon: Cpu, title: "Core Concepts", items: ["OOPs", "DBMS", "Data Structures", "Computer Networks", "SDLC"], color: "var(--rb-blue)", anim: "animate-icon-pop" },
+  { icon: Network, title: "Focus Areas", items: ["Ethical Hacking", "Python Dev", "Front-End", "Networking"], color: "var(--rb-violet)", anim: "animate-icon-bounce" },
 ];
 
 const education = [
@@ -256,17 +256,35 @@ function Skills() {
       <div className="mx-auto max-w-6xl">
         <SectionHeader kicker="02 — Toolkit" title="Skills & Stack" sub="A blend of secure-coding fundamentals, developer tooling, and core computer science." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {skills.map(({ icon: Icon, title, items }) => (
-            <div key={title} className="glass glass-hover rounded-2xl p-6">
+          {skills.map(({ icon: Icon, title, items, color, anim }) => (
+            <div
+              key={title}
+              className="glass glass-hover group rounded-2xl p-6"
+              style={{ borderTop: `3px solid ${color}` }}
+            >
               <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <Icon className="size-5" />
+                <div
+                  className="flex size-12 items-center justify-center rounded-xl"
+                  style={{ background: `color-mix(in oklab, ${color} 55%, white)` }}
+                >
+                  <Icon
+                    className={`size-6 ${anim}`}
+                    style={{ color: `color-mix(in oklab, ${color} 60%, black)` }}
+                  />
                 </div>
                 <h3 className="font-display text-lg font-semibold">{title}</h3>
               </div>
               <ul className="mt-5 flex flex-wrap gap-2">
                 {items.map((it) => (
-                  <li key={it} className="rounded-md border border-border/60 bg-ocean-deep/50 px-2.5 py-1 text-xs font-mono text-muted-foreground">
+                  <li
+                    key={it}
+                    className="rounded-md px-2.5 py-1 text-xs font-mono"
+                    style={{
+                      background: `color-mix(in oklab, ${color} 30%, white)`,
+                      color: `color-mix(in oklab, ${color} 55%, black)`,
+                      border: `1px solid color-mix(in oklab, ${color} 50%, white)`,
+                    }}
+                  >
                     {it}
                   </li>
                 ))}
