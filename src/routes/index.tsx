@@ -150,7 +150,7 @@ function Hero() {
             innovative solutions and continuously learning emerging technologies.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
-            <a href="#" className="btn-cyber"><Download className="size-4" /> Download Resume</a>
+            <a href={resumeAsset.url} download="Kavibharathi-S-Resume.png" target="_blank" rel="noopener noreferrer" className="btn-cyber"><Download className="size-4" /> Download Resume</a>
             <a href="#projects" className="btn-ghost-cyber">View Projects <ArrowRight className="size-4" /></a>
             <a href="#contact" className="btn-ghost-cyber">Contact Me</a>
           </div>
