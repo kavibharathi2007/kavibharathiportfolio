@@ -9,6 +9,8 @@ import {
 import studentPhoto from "@/assets/student-photo.png.asset.json";
 import resumeAsset from "@/assets/resume.png.asset.json";
 import { ParticleField } from "@/components/ParticleField";
+import { AtomField } from "@/components/AtomField";
+import { CursorGlow } from "@/components/CursorGlow";
 
 const heroPortrait = studentPhoto.url;
 
@@ -91,6 +93,8 @@ const navLinks = [
 function Portfolio() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <AtomField />
+      <CursorGlow />
       <Nav />
       <Hero />
       <About />
@@ -162,7 +166,7 @@ function Hero() {
               { icon: Globe, href: "#" },
               { icon: Mail, href: "mailto:Kavibharathi.71382402060@sritcbe.ac.in" },
             ].map(({ icon: Icon, href }, i) => (
-              <a key={i} href={href} className="glass glass-hover flex size-10 items-center justify-center rounded-full text-primary">
+              <a key={i} href={href} className="glass glass-hover icon-touch flex size-10 items-center justify-center rounded-full text-primary">
                 <Icon className="size-4" />
               </a>
             ))}
@@ -523,7 +527,7 @@ function Footer() {
         <p className="font-mono text-xs">Cyber Security · Software Development · Computer Science Engineering</p>
         <div className="flex gap-3">
           {[Github, Linkedin, Mail].map((Icon, i) => (
-            <a key={i} href="#" className="glass glass-hover flex size-9 items-center justify-center rounded-full text-primary">
+            <a key={i} href="#" className="glass glass-hover icon-touch flex size-9 items-center justify-center rounded-full text-primary">
               <Icon className="size-4" />
             </a>
           ))}
