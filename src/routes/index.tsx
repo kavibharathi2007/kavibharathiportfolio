@@ -4,7 +4,7 @@ import {
   Shield, Code2, Network, Lock, Github, Linkedin, Mail, Phone, Download,
   ArrowRight, ExternalLink, Award, GraduationCap, Briefcase, Sparkles,
   Terminal, Database, Globe, Cpu, Eye, Trophy, Languages, Palette,
-  Send, MapPin, ChevronDown,
+  Send, MapPin, ChevronDown, BookOpen, Lightbulb, Zap,
 } from "lucide-react";
 import studentPhoto from "@/assets/student-photo.png.asset.json";
 import resumeAsset from "@/assets/resume.png.asset.json";
@@ -94,6 +94,7 @@ function Portfolio() {
       <Nav />
       <Hero />
       <About />
+      <Philosophy />
       <Skills />
       <Education />
       <Certifications />
@@ -149,6 +150,9 @@ function Hero() {
             Passionate Computer Science Engineering student focused on Cyber Security,
             Secure Coding, Networking, and Software Development. Dedicated to building
             innovative solutions and continuously learning emerging technologies.
+          </p>
+          <p className="font-display text-lg sm:text-xl font-semibold tracking-wide text-primary pt-1">
+            Secure. Build. Innovate. Repeat.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <a href={resumeAsset.url} download="Kavibharathi-S-Resume.png" target="_blank" rel="noopener noreferrer" className="btn-cyber"><Download className="size-4" /> Download Resume</a>
@@ -244,6 +248,44 @@ function About() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Philosophy() {
+  const topics = [
+    {
+      icon: BookOpen,
+      title: "Continuous Learning",
+      text: "I strongly believe that technology evolves every day, and staying updated is essential for growth. I continuously invest time in learning new technologies, improving my programming skills, and exploring emerging trends in Cyber Security and Software Development. Through online courses, hands-on projects, internships, and technical communities, I strive to expand my knowledge and transform learning into practical experience.",
+    },
+    {
+      icon: Lightbulb,
+      title: "Problem Solving",
+      text: "I believe that every complex problem can be decomposed into smaller, solvable pieces. Whether debugging code, analyzing network vulnerabilities, or architecting a system, I rely on structured thinking and persistence. My hackathon and internship experiences have sharpened my ability to stay calm under pressure, iterate quickly, and deliver effective solutions that balance security, performance, and usability.",
+    },
+    {
+      icon: Zap,
+      title: "Innovation",
+      text: "I am passionate about creating innovative solutions that address real-world problems. From developing impactful projects like INK A BOT to exploring accessibility-focused technologies such as Sign Language Translation systems, I aim to combine creativity and technology to make a meaningful difference. I believe innovation starts with curiosity and grows through experimentation and continuous improvement.",
+    },
+  ];
+  return (
+    <section className="relative px-6 py-24">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader kicker="Philosophy" title="How I Think & Work" sub="The principles that guide my journey in technology." />
+        <div className="grid gap-6 lg:grid-cols-3">
+          {topics.map((t) => (
+            <div key={t.title} className="glass glass-hover rounded-3xl p-8">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-primary/15 text-primary mb-6">
+                <t.icon className="size-6" />
+              </div>
+              <h3 className="font-display text-xl font-semibold mb-3">{t.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">{t.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
