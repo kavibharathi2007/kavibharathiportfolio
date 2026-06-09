@@ -263,7 +263,7 @@ function Skills() {
           {skills.map(({ icon: Icon, title, items }) => (
             <div key={title} className="glass glass-hover rounded-2xl p-6">
               <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary icon-touch">
                   <Icon className="size-5" />
                 </div>
                 <h3 className="font-display text-lg font-semibold">{title}</h3>
@@ -462,7 +462,7 @@ function Contact() {
               const C: any = href ? "a" : "div";
               return (
                 <C key={label} href={href} className="flex items-center gap-4 rounded-2xl border border-border/60 bg-ocean-deep/40 p-4 hover:border-primary/60 transition">
-                  <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary icon-touch">
                     <Icon className="size-4" />
                   </div>
                   <div className="min-w-0">
