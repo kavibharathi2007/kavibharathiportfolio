@@ -9,6 +9,8 @@ import {
 import studentPhoto from "@/assets/student-photo.png.asset.json";
 import resumeAsset from "@/assets/resume.png.asset.json";
 import { ParticleField } from "@/components/ParticleField";
+import { AtomField } from "@/components/AtomField";
+import { CursorGlow } from "@/components/CursorGlow";
 
 const heroPortrait = studentPhoto.url;
 
@@ -91,6 +93,8 @@ const navLinks = [
 function Portfolio() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <AtomField />
+      <CursorGlow />
       <Nav />
       <Hero />
       <About />
@@ -162,7 +166,7 @@ function Hero() {
               { icon: Globe, href: "#" },
               { icon: Mail, href: "mailto:Kavibharathi.71382402060@sritcbe.ac.in" },
             ].map(({ icon: Icon, href }, i) => (
-              <a key={i} href={href} className="glass glass-hover flex size-10 items-center justify-center rounded-full text-primary">
+              <a key={i} href={href} className="glass glass-hover icon-touch flex size-10 items-center justify-center rounded-full text-primary">
                 <Icon className="size-4" />
               </a>
             ))}
@@ -259,7 +263,7 @@ function Skills() {
           {skills.map(({ icon: Icon, title, items }) => (
             <div key={title} className="glass glass-hover rounded-2xl p-6">
               <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary icon-touch">
                   <Icon className="size-5" />
                 </div>
                 <h3 className="font-display text-lg font-semibold">{title}</h3>
@@ -458,7 +462,7 @@ function Contact() {
               const C: any = href ? "a" : "div";
               return (
                 <C key={label} href={href} className="flex items-center gap-4 rounded-2xl border border-border/60 bg-ocean-deep/40 p-4 hover:border-primary/60 transition">
-                  <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary icon-touch">
                     <Icon className="size-4" />
                   </div>
                   <div className="min-w-0">
@@ -523,7 +527,7 @@ function Footer() {
         <p className="font-mono text-xs">Cyber Security · Software Development · Computer Science Engineering</p>
         <div className="flex gap-3">
           {[Github, Linkedin, Mail].map((Icon, i) => (
-            <a key={i} href="#" className="glass glass-hover flex size-9 items-center justify-center rounded-full text-primary">
+            <a key={i} href="#" className="glass glass-hover icon-touch flex size-9 items-center justify-center rounded-full text-primary">
               <Icon className="size-4" />
             </a>
           ))}
