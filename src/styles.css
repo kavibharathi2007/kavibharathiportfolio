@@ -181,3 +181,29 @@
 @utility animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
+
+@keyframes atom-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes atom-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(20px, -25px) rotate(20deg); }
+}
+@keyframes cursor-ripple {
+  0% { transform: scale(0.4); opacity: 0.9; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html, body, a, button, input, textarea, label { cursor: none !important; }
+}
+
+@utility icon-touch {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  &:hover {
+    color: #ffffff;
+    transform: translateY(-2px) scale(1.08);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.6), 0 0 24px rgba(255,255,255,0.55);
+  }
+}
