@@ -9,7 +9,7 @@ import {
 import studentPhoto from "@/assets/student-photo.png.asset.json";
 import resumeAsset from "@/assets/resume.png.asset.json";
 import { ParticleField } from "@/components/ParticleField";
-import { AtomField } from "@/components/AtomField";
+import { SparkField } from "@/components/SparkField";
 import { CursorGlow } from "@/components/CursorGlow";
 
 const heroPortrait = studentPhoto.url;
@@ -93,7 +93,7 @@ const navLinks = [
 function Portfolio() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      <AtomField />
+      <SparkField />
       <CursorGlow />
       <Nav />
       <Hero />

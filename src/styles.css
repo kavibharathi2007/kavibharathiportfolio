@@ -182,13 +182,9 @@
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
-@keyframes atom-orbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-@keyframes atom-float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(20px, -25px) rotate(20deg); }
+@keyframes spark-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.4); }
 }
 @keyframes cursor-ripple {
   0% { transform: scale(0.4); opacity: 0.9; }
