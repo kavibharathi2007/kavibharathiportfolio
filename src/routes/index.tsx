@@ -391,7 +391,7 @@ function Experience() {
         <SectionHeader kicker="05 — Experience" title="Internships" />
         <div className="relative">
           {internships.map((i) => (
-            <TimelineItem key={i.role} icon={Briefcase} title={i.role} subtitle={i.org} period="Internship" desc={i.desc} />
+            <TimelineItem key={i.role} icon={Briefcase} title={i.role} subtitle={i.org} period="Internship" desc={i.desc} repo={i.repo} />
           ))}
         </div>
       </div>
