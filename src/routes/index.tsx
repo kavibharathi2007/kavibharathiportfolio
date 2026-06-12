@@ -167,7 +167,7 @@ function Hero() {
           </div>
           <div className="flex items-center gap-3 pt-3">
             {[
-              { icon: Github, href: "#" },
+              { icon: Github, href: GITHUB_URL },
               { icon: Linkedin, href: "#" },
               { icon: Globe, href: "#" },
               { icon: Mail, href: "mailto:Kavibharathi.71382402060@sritcbe.ac.in" },
