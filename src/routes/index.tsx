@@ -327,7 +327,7 @@ function Skills() {
   );
 }
 
-function TimelineItem({ icon: Icon, title, subtitle, period, desc }: { icon: any; title: string; subtitle: string; period: string; desc?: string }) {
+function TimelineItem({ icon: Icon, title, subtitle, period, desc, repo }: { icon: any; title: string; subtitle: string; period: string; desc?: string; repo?: string }) {
   return (
     <div className="relative pl-12 pb-10 last:pb-0">
       <div className="absolute left-0 top-0 flex size-9 items-center justify-center rounded-full border border-primary/40 bg-ocean-deep text-primary">
@@ -341,6 +341,11 @@ function TimelineItem({ icon: Icon, title, subtitle, period, desc }: { icon: any
         </div>
         <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
         {desc && <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{desc}</p>}
+        {repo && (
+          <a href={repo} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-mono text-primary hover:bg-primary/20 transition icon-touch">
+            <Github className="size-3.5" /> View Repository
+          </a>
+        )}
       </div>
     </div>
   );
