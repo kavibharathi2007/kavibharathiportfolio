@@ -53,10 +53,12 @@ const certifications = [
   "First Class Typewriting",
 ];
 
+const GITHUB_URL = "https://github.com/kavibharathi2007";
+
 const internships = [
-  { role: "Cyber Security Intern", org: "Security Track", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection." },
-  { role: "Web Development Intern", org: "SkillCraft Technologies", desc: "Built To-Do List and Resume Generator projects using HTML and CSS." },
-  { role: "Python Developer Intern", org: "ShadowFox", desc: "Python development and practical project implementation." },
+  { role: "Cyber Security Intern", org: "Code Alpha", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection.", repo: "https://github.com/kavibharathi2007" },
+  { role: "Web Development Intern", org: "SkillCraft Technologies", desc: "Built To-Do List and Resume Generator projects using HTML and CSS.", repo: "https://github.com/kavibharathi2007" },
+  { role: "Python Developer Intern", org: "ShadowFox", desc: "Python development and practical project implementation.", repo: "https://github.com/kavibharathi2007" },
 ];
 
 const projects = [
@@ -165,7 +167,7 @@ function Hero() {
           </div>
           <div className="flex items-center gap-3 pt-3">
             {[
-              { icon: Github, href: "#" },
+              { icon: Github, href: GITHUB_URL },
               { icon: Linkedin, href: "#" },
               { icon: Globe, href: "#" },
               { icon: Mail, href: "mailto:Kavibharathi.71382402060@sritcbe.ac.in" },
@@ -325,7 +327,7 @@ function Skills() {
   );
 }
 
-function TimelineItem({ icon: Icon, title, subtitle, period, desc }: { icon: any; title: string; subtitle: string; period: string; desc?: string }) {
+function TimelineItem({ icon: Icon, title, subtitle, period, desc, repo }: { icon: any; title: string; subtitle: string; period: string; desc?: string; repo?: string }) {
   return (
     <div className="relative pl-12 pb-10 last:pb-0">
       <div className="absolute left-0 top-0 flex size-9 items-center justify-center rounded-full border border-primary/40 bg-ocean-deep text-primary">
@@ -339,6 +341,11 @@ function TimelineItem({ icon: Icon, title, subtitle, period, desc }: { icon: any
         </div>
         <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
         {desc && <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{desc}</p>}
+        {repo && (
+          <a href={repo} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-mono text-primary hover:bg-primary/20 transition icon-touch">
+            <Github className="size-3.5" /> View Repository
+          </a>
+        )}
       </div>
     </div>
   );
@@ -384,7 +391,7 @@ function Experience() {
         <SectionHeader kicker="05 — Experience" title="Internships" />
         <div className="relative">
           {internships.map((i) => (
-            <TimelineItem key={i.role} icon={Briefcase} title={i.role} subtitle={i.org} period="Internship" desc={i.desc} />
+            <TimelineItem key={i.role} icon={Briefcase} title={i.role} subtitle={i.org} period="Internship" desc={i.desc} repo={i.repo} />
           ))}
         </div>
       </div>
@@ -499,7 +506,7 @@ function Contact() {
               { icon: Phone, label: "Phone", value: "+91 6385594877", href: "tel:+916385594877" },
               { icon: MapPin, label: "Location", value: "Coimbatore, India" },
               { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/kavibharathi", href: "#" },
-              { icon: Github, label: "GitHub", value: "github.com/kavibharathi", href: "#" },
+              { icon: Github, label: "GitHub", value: "github.com/kavibharathi2007", href: GITHUB_URL },
             ].map(({ icon: Icon, label, value, href }) => {
               const C: any = href ? "a" : "div";
               return (
@@ -568,8 +575,12 @@ function Footer() {
         <p>© 2026 KAVIBHARATHI S</p>
         <p className="font-mono text-xs">Cyber Security · Software Development · Computer Science Engineering</p>
         <div className="flex gap-3">
-          {[Github, Linkedin, Mail].map((Icon, i) => (
-            <a key={i} href="#" className="glass glass-hover icon-touch flex size-9 items-center justify-center rounded-full text-primary">
+          {[
+            { Icon: Github, href: GITHUB_URL },
+            { Icon: Linkedin, href: "#" },
+            { Icon: Mail, href: "mailto:Kavibharathi.71382402060@sritcbe.ac.in" },
+          ].map(({ Icon, href }, i) => (
+            <a key={i} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="glass glass-hover icon-touch flex size-9 items-center justify-center rounded-full text-primary">
               <Icon className="size-4" />
             </a>
           ))}
