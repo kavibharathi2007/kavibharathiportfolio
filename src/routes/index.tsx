@@ -506,7 +506,7 @@ function Contact() {
               { icon: Phone, label: "Phone", value: "+91 6385594877", href: "tel:+916385594877" },
               { icon: MapPin, label: "Location", value: "Coimbatore, India" },
               { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/kavibharathi", href: "#" },
-              { icon: Github, label: "GitHub", value: "github.com/kavibharathi", href: "#" },
+              { icon: Github, label: "GitHub", value: "github.com/kavibharathi2007", href: GITHUB_URL },
             ].map(({ icon: Icon, label, value, href }) => {
               const C: any = href ? "a" : "div";
               return (
