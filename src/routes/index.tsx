@@ -575,8 +575,12 @@ function Footer() {
         <p>© 2026 KAVIBHARATHI S</p>
         <p className="font-mono text-xs">Cyber Security · Software Development · Computer Science Engineering</p>
         <div className="flex gap-3">
-          {[Github, Linkedin, Mail].map((Icon, i) => (
-            <a key={i} href="#" className="glass glass-hover icon-touch flex size-9 items-center justify-center rounded-full text-primary">
+          {[
+            { Icon: Github, href: GITHUB_URL },
+            { Icon: Linkedin, href: "#" },
+            { Icon: Mail, href: "mailto:Kavibharathi.71382402060@sritcbe.ac.in" },
+          ].map(({ Icon, href }, i) => (
+            <a key={i} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="glass glass-hover icon-touch flex size-9 items-center justify-center rounded-full text-primary">
               <Icon className="size-4" />
             </a>
           ))}
