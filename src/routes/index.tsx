@@ -53,10 +53,12 @@ const certifications = [
   "First Class Typewriting",
 ];
 
+const GITHUB_URL = "https://github.com/kavibharathi2007";
+
 const internships = [
-  { role: "Cyber Security Intern", org: "Security Track", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection." },
-  { role: "Web Development Intern", org: "SkillCraft Technologies", desc: "Built To-Do List and Resume Generator projects using HTML and CSS." },
-  { role: "Python Developer Intern", org: "ShadowFox", desc: "Python development and practical project implementation." },
+  { role: "Cyber Security Intern", org: "Code Alpha", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection.", repo: "https://github.com/kavibharathi2007" },
+  { role: "Web Development Intern", org: "SkillCraft Technologies", desc: "Built To-Do List and Resume Generator projects using HTML and CSS.", repo: "https://github.com/kavibharathi2007" },
+  { role: "Python Developer Intern", org: "ShadowFox", desc: "Python development and practical project implementation.", repo: "https://github.com/kavibharathi2007" },
 ];
 
 const projects = [
