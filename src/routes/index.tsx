@@ -389,14 +389,59 @@ function Certifications() {
   return (
     <section className="relative px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionHeader kicker="04 — Credentials" title="Certifications" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {certifications.map((c) => (
-            <div key={c} className="glass glass-hover group flex items-start gap-3 rounded-2xl p-5">
-              <Award className="mt-0.5 size-5 shrink-0 text-primary" />
-              <p className="text-sm font-medium">{c}</p>
-            </div>
-          ))}
+        <SectionHeader
+          kicker="04 — Credentials"
+          title="Certifications"
+          sub="Infosys Springboard virtual internship tracks & additional credentials."
+        />
+
+        <div className="mb-10">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-5 text-center">
+            Infosys Springboard
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {springboardCerts.map((c) => (
+              <a
+                key={c.title}
+                href={c.image}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass glass-hover group block overflow-hidden rounded-2xl"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-ocean-deep">
+                  <img
+                    src={c.image}
+                    alt={`Infosys Springboard certificate — ${c.title}`}
+                    loading="lazy"
+                    className="size-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="p-4">
+                  <div className="flex items-start gap-2">
+                    <Award className="mt-0.5 size-4 shrink-0 text-primary" />
+                    <p className="text-sm font-semibold leading-snug">{c.title}</p>
+                  </div>
+                  <p className="mt-2 pl-6 font-mono text-[11px] text-muted-foreground">
+                    {c.date}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-5 text-center">
+            Other Credentials
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {otherCertifications.map((c) => (
+              <div key={c} className="glass glass-hover group flex items-start gap-3 rounded-2xl p-5">
+                <Award className="mt-0.5 size-5 shrink-0 text-primary" />
+                <p className="text-sm font-medium">{c}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
