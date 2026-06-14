@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 });
 
 const skills = [
-  { icon: Terminal, title: "Programming", items: ["Python", "C", "SQL"] },
+  { icon: Terminal, title: "Programming", items: ["Python", "C", "C++", "HTML", "SQL"] },
   { icon: Shield, title: "Cyber Security", items: ["Network Security", "Secure Coding", "Vulnerability Assessment", "Security Fundamentals"] },
   { icon: Globe, title: "Web Development", items: ["HTML5", "CSS3", "Responsive Design"] },
   { icon: Code2, title: "Tools", items: ["GitHub", "VS Code", "Canva"] },
