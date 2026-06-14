@@ -31,7 +31,7 @@ export function CursorGlow() {
       rx += (tx - rx) * 0.12;
       ry += (ty - ry) * 0.12;
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${rx - 22}px, ${ry - 22}px, 0)`;
+        ringRef.current.style.transform = `translate3d(${rx - 7}px, ${ry - 7}px, 0)`;
       }
       raf = requestAnimationFrame(loop);
     };
