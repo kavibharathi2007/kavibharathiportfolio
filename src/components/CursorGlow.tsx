@@ -19,7 +19,7 @@ export function CursorGlow() {
       tx = e.clientX;
       ty = e.clientY;
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${tx - 4}px, ${ty - 4}px, 0)`;
+        dotRef.current.style.transform = `translate3d(${tx - 2}px, ${ty - 2}px, 0)`;
       }
     };
     const onDown = (e: MouseEvent) => {
