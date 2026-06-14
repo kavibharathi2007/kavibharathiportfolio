@@ -17,8 +17,8 @@ export function SparkField() {
               left: `${left}%`,
               width: size,
               height: size,
-              background: "#ffffff",
-              boxShadow: "0 0 6px #ffffff, 0 0 14px var(--color-primary)",
+              background: "var(--color-primary)",
+              boxShadow: "0 0 6px var(--color-primary), 0 0 14px var(--color-accent)",
               animation: `spark-twinkle ${dur}s ease-in-out ${delay}s infinite`,
             }}
           />
