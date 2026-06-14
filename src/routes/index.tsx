@@ -42,7 +42,25 @@ const education = [
   { school: "Tagore Matric Higher Secondary School", degree: "Higher Secondary", period: "2021 – 2023", score: "Score: 85%" },
 ];
 
-const certifications = [
+import seAgileCert from "@/assets/certs/se-agile.png.asset.json";
+import basicsPythonCert from "@/assets/certs/basics-python.png.asset.json";
+import pythonP1Cert from "@/assets/certs/python-p1.png.asset.json";
+import pythonP2Cert from "@/assets/certs/python-p2.png.asset.json";
+import oopPythonCert from "@/assets/certs/oop-python.png.asset.json";
+import dbmsCert from "@/assets/certs/dbms.png.asset.json";
+import businessCommCert from "@/assets/certs/business-comm.png.asset.json";
+
+const springboardCerts = [
+  { title: "Software Engineering & Agile Software Development", date: "April 12, 2026", image: seAgileCert.url },
+  { title: "Basics of Python", date: "April 12, 2026", image: basicsPythonCert.url },
+  { title: "Programming Fundamentals using Python — Part 1", date: "April 14, 2026", image: pythonP1Cert.url },
+  { title: "Programming Fundamentals using Python — Part 2", date: "April 14, 2026", image: pythonP2Cert.url },
+  { title: "Object Oriented Programming using Python", date: "April 14, 2026", image: oopPythonCert.url },
+  { title: "Database Management System — Part 1", date: "April 22, 2026", image: dbmsCert.url },
+  { title: "Basics of Business Communication", date: "April 27, 2026", image: businessCommCert.url },
+];
+
+const otherCertifications = [
   "ISTE Certified",
   "Cyber Security and Its Foundations",
   "IBM & Infosys Springboard Encryption Course",
@@ -57,6 +75,7 @@ const GITHUB_URL = "https://github.com/kavibharathi2007";
 
 const internships = [
   { role: "Cyber Security Intern", org: "Code Alpha", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection.", repo: "https://github.com/kavibharathi2007" },
+  { role: "Python Developer Intern (Virtual)", org: "Infosys Springboard", desc: "Virtual internship focused on Python programming, OOP, database fundamentals, and software engineering best practices. Completed multiple Infosys Springboard certification tracks in the Python domain.", repo: "https://github.com/kavibharathi2007" },
   { role: "Web Development Intern", org: "SkillCraft Technologies", desc: "Built To-Do List and Resume Generator projects using HTML and CSS.", repo: "https://github.com/kavibharathi2007" },
   { role: "Python Developer Intern", org: "ShadowFox", desc: "Python development and practical project implementation.", repo: "https://github.com/kavibharathi2007" },
 ];
