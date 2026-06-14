@@ -19,7 +19,7 @@ export function CursorGlow() {
       tx = e.clientX;
       ty = e.clientY;
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${tx - 4}px, ${ty - 4}px, 0)`;
+        dotRef.current.style.transform = `translate3d(${tx - 2}px, ${ty - 2}px, 0)`;
       }
     };
     const onDown = (e: MouseEvent) => {
@@ -31,7 +31,7 @@ export function CursorGlow() {
       rx += (tx - rx) * 0.12;
       ry += (ty - ry) * 0.12;
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${rx - 22}px, ${ry - 22}px, 0)`;
+        ringRef.current.style.transform = `translate3d(${rx - 7}px, ${ry - 7}px, 0)`;
       }
       raf = requestAnimationFrame(loop);
     };
@@ -49,27 +49,42 @@ export function CursorGlow() {
     <div className="pointer-events-none fixed inset-0 z-[100]" aria-hidden>
       <div
         ref={ringRef}
-        className="absolute top-0 left-0 size-11 rounded-full"
-        style={{ borderWidth: 1, borderStyle: "solid", borderColor: "var(--color-primary)", boxShadow: "0 0 24px color-mix(in oklab, var(--color-primary) 50%, transparent), inset 0 0 12px color-mix(in oklab, var(--color-primary) 35%, transparent)" }}
+        className="absolute top-0 left-0 rounded-full"
+        style={{
+          width: 14,
+          height: 14,
+          borderWidth: 1,
+          borderStyle: "solid",
+          borderColor: "color-mix(in oklab, var(--color-primary) 70%, transparent)",
+          boxShadow: "0 0 6px color-mix(in oklab, var(--color-primary) 40%, transparent)",
+        }}
       />
       <div
         ref={dotRef}
-        className="absolute top-0 left-0 size-2 rounded-full"
-        style={{ background: "var(--color-primary)", boxShadow: "0 0 16px color-mix(in oklab, var(--color-primary) 80%, transparent)" }}
+        className="absolute top-0 left-0 rounded-full"
+        style={{
+          width: 4,
+          height: 4,
+          background: "var(--color-primary)",
+          boxShadow: "0 0 6px color-mix(in oklab, var(--color-primary) 70%, transparent)",
+        }}
       />
       {ripples.map((r) => (
         <span
           key={r.id}
-          className="absolute size-6 rounded-full"
+          className="absolute rounded-full"
           style={{
-            left: r.x - 12,
-            top: r.y - 12,
-            borderWidth: 1, borderStyle: "solid", borderColor: "var(--color-primary)",
+            width: 12,
+            height: 12,
+            left: r.x - 6,
+            top: r.y - 6,
+            borderWidth: 1,
+            borderStyle: "solid",
+            borderColor: "color-mix(in oklab, var(--color-primary) 80%, transparent)",
             animation: "cursor-ripple 0.7s ease-out forwards",
-            boxShadow: "0 0 20px color-mix(in oklab, var(--color-primary) 60%, transparent)",
           }}
         />
       ))}
     </div>
-  );
+   );
 }

@@ -1,13 +1,18 @@
 export function SparkField() {
-  const sparks = Array.from({ length: 40 });
+  const sparks = Array.from({ length: 22 });
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>
       {sparks.map((_, i) => {
-        const size = 1 + Math.random() * 2.5;
+        const size = 1.5 + Math.random() * 2;
         const top = Math.random() * 100;
         const left = Math.random() * 100;
-        const dur = 1.6 + Math.random() * 2.8;
-        const delay = -Math.random() * 4;
+        const driftY = 10 + Math.random() * 20;
+        const floatDur = 9 + Math.random() * 10;
+        const twinkleDur = 3 + Math.random() * 3.5;
+        const delay = -Math.random() * 8;
+        const cyan = i % 2 === 0;
+        const color = cyan ? "rgba(180, 235, 255, 0.85)" : "rgba(255, 255, 255, 0.9)";
+        const glow = cyan ? "rgba(120, 215, 255, 0.55)" : "rgba(255, 255, 255, 0.55)";
         return (
           <span
             key={i}
@@ -17,9 +22,11 @@ export function SparkField() {
               left: `${left}%`,
               width: size,
               height: size,
-              background: "var(--color-primary)",
-              boxShadow: "0 0 6px var(--color-primary), 0 0 14px var(--color-accent)",
-              animation: `spark-twinkle ${dur}s ease-in-out ${delay}s infinite`,
+              background: color,
+              boxShadow: `0 0 ${4 + size}px ${glow}`,
+              opacity: 0,
+              animation: `sparkle-twinkle ${twinkleDur}s ease-in-out ${delay}s infinite, sparkle-float ${floatDur}s ease-in-out ${delay}s infinite`,
+              ["--drift-y" as any]: `-${driftY}px`,
             }}
           />
         );

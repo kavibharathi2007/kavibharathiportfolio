@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 });
 
 const skills = [
-  { icon: Terminal, title: "Programming", items: ["Python", "C", "SQL"] },
+  { icon: Terminal, title: "Programming", items: ["Python", "C", "C++", "HTML", "SQL"] },
   { icon: Shield, title: "Cyber Security", items: ["Network Security", "Secure Coding", "Vulnerability Assessment", "Security Fundamentals"] },
   { icon: Globe, title: "Web Development", items: ["HTML5", "CSS3", "Responsive Design"] },
   { icon: Code2, title: "Tools", items: ["GitHub", "VS Code", "Canva"] },
@@ -166,7 +166,17 @@ function Hero() {
             Available for internships & collaborations
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
-            Hi, I'm <span className="text-gradient">KAVIBHARATHI S</span>
+            Hi, I'm{" "}
+            <span
+              className="text-gradient font-display italic tracking-tight"
+              style={{
+                fontFamily: "'Playfair Display', 'Space Grotesk', serif",
+                letterSpacing: "-0.01em",
+                textShadow: "0 2px 24px color-mix(in oklab, var(--color-primary) 25%, transparent)",
+              }}
+            >
+              Kavibharathi&nbsp;S
+            </span>
           </h1>
           <p className="text-lg sm:text-xl text-primary/90 font-mono">
             Cyber Security Enthusiast · Software Developer · CSE Student
