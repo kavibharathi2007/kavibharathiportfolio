@@ -49,23 +49,24 @@ export function CursorGlow() {
     <div className="pointer-events-none fixed inset-0 z-[100]" aria-hidden>
       <div
         ref={ringRef}
-        className="absolute top-0 left-0 size-11 rounded-full border border-white/70 mix-blend-screen"
-        style={{ boxShadow: "0 0 24px rgba(255,255,255,0.55), inset 0 0 12px rgba(255,255,255,0.35)" }}
+        className="absolute top-0 left-0 size-11 rounded-full"
+        style={{ borderWidth: 1, borderStyle: "solid", borderColor: "var(--color-primary)", boxShadow: "0 0 24px color-mix(in oklab, var(--color-primary) 50%, transparent), inset 0 0 12px color-mix(in oklab, var(--color-primary) 35%, transparent)" }}
       />
       <div
         ref={dotRef}
-        className="absolute top-0 left-0 size-2 rounded-full bg-white"
-        style={{ boxShadow: "0 0 16px rgba(255,255,255,0.95)" }}
+        className="absolute top-0 left-0 size-2 rounded-full"
+        style={{ background: "var(--color-primary)", boxShadow: "0 0 16px color-mix(in oklab, var(--color-primary) 80%, transparent)" }}
       />
       {ripples.map((r) => (
         <span
           key={r.id}
-          className="absolute size-6 rounded-full border border-white/80"
+          className="absolute size-6 rounded-full"
           style={{
             left: r.x - 12,
             top: r.y - 12,
+            borderWidth: 1, borderStyle: "solid", borderColor: "var(--color-primary)",
             animation: "cursor-ripple 0.7s ease-out forwards",
-            boxShadow: "0 0 20px rgba(255,255,255,0.7)",
+            boxShadow: "0 0 20px color-mix(in oklab, var(--color-primary) 60%, transparent)",
           }}
         />
       ))}
