@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Shield, Code2, Network, Lock, Github, Linkedin, Mail, Phone, Download,
   ArrowRight, ExternalLink, Award, GraduationCap, Briefcase, Sparkles,
   Terminal, Database, Globe, Cpu, Eye, Trophy, Languages, Palette,
-  Send, MapPin, ChevronDown, BookOpen, Lightbulb, Zap,
+  Send, MapPin, ChevronDown, BookOpen, Lightbulb, Zap, FolderOpen, X,
 } from "lucide-react";
+
 import studentPhoto from "@/assets/student-photo.png.asset.json";
 import resumeAsset from "@/assets/resume.png.asset.json";
 import { ParticleField } from "@/components/ParticleField";
@@ -49,27 +50,89 @@ import pythonP2Cert from "@/assets/certs/python-p2.png.asset.json";
 import oopPythonCert from "@/assets/certs/oop-python.png.asset.json";
 import dbmsCert from "@/assets/certs/dbms.png.asset.json";
 import businessCommCert from "@/assets/certs/business-comm.png.asset.json";
+import ciscoJuniorCert from "@/assets/certs/cisco-junior-cybersec.png.asset.json";
+import ciscoPacketCert from "@/assets/certs/cisco-packet-tracer.png.asset.json";
+import skillIndiaSecurityCert from "@/assets/certs/skillindia-security-analyst.png.asset.json";
+import skillIndiaCyberProgramCert from "@/assets/certs/skillindia-cyber-program.png.asset.json";
+import skillIndiaIntroCert from "@/assets/certs/skillindia-intro-cyber.png.asset.json";
+import skillIndiaIotCert from "@/assets/certs/skillindia-iot.png.asset.json";
+import spokenPythonCert from "@/assets/certs/spoken-python.png.asset.json";
+import spokenCppCert from "@/assets/certs/spoken-cpp.png.asset.json";
+import spokenCCert from "@/assets/certs/spoken-c.png.asset.json";
 
-const springboardCerts = [
-  { title: "Software Engineering & Agile Software Development", date: "April 12, 2026", image: seAgileCert.url },
-  { title: "Basics of Python", date: "April 12, 2026", image: basicsPythonCert.url },
-  { title: "Programming Fundamentals using Python — Part 1", date: "April 14, 2026", image: pythonP1Cert.url },
-  { title: "Programming Fundamentals using Python — Part 2", date: "April 14, 2026", image: pythonP2Cert.url },
-  { title: "Object Oriented Programming using Python", date: "April 14, 2026", image: oopPythonCert.url },
-  { title: "Database Management System — Part 1", date: "April 22, 2026", image: dbmsCert.url },
-  { title: "Basics of Business Communication", date: "April 27, 2026", image: businessCommCert.url },
+type CertItem = { title: string; date?: string; image?: string };
+type CertFolder = { id: string; name: string; subtitle: string; accent: string; certs: CertItem[] };
+
+const certFolders: CertFolder[] = [
+  {
+    id: "infosys",
+    name: "INFOSYS SPRINGBOARD",
+    subtitle: "Virtual internship & encryption courses",
+    accent: "from-amber-500/30 to-orange-700/20",
+    certs: [
+      { title: "Software Engineering & Agile Software Development", date: "April 12, 2026", image: seAgileCert.url },
+      { title: "Basics of Python", date: "April 12, 2026", image: basicsPythonCert.url },
+      { title: "Programming Fundamentals using Python — Part 1", date: "April 14, 2026", image: pythonP1Cert.url },
+      { title: "Programming Fundamentals using Python — Part 2", date: "April 14, 2026", image: pythonP2Cert.url },
+      { title: "Object Oriented Programming using Python", date: "April 14, 2026", image: oopPythonCert.url },
+      { title: "Database Management System — Part 1", date: "April 22, 2026", image: dbmsCert.url },
+      { title: "Basics of Business Communication", date: "April 27, 2026", image: businessCommCert.url },
+      { title: "IBM & Infosys Springboard Encryption Course", date: "2026" },
+    ],
+  },
+  {
+    id: "cisco",
+    name: "CISCO CERTIFICATES",
+    subtitle: "Networking Academy programs",
+    accent: "from-sky-500/25 to-blue-700/20",
+    certs: [
+      { title: "Junior Cybersecurity Analyst Career Path Exam", date: "05 Jun 2026", image: ciscoJuniorCert.url },
+      { title: "Getting Started with Cisco Packet Tracer", date: "13 Jun 2026", image: ciscoPacketCert.url },
+    ],
+  },
+  {
+    id: "skillindia",
+    name: "SKILL INDIA CERTIFICATES",
+    subtitle: "Reliance Foundation & NIIT Foundation",
+    accent: "from-emerald-500/25 to-amber-600/20",
+    certs: [
+      { title: "Security Analyst Certificate Programme", date: "May 20, 2026 · 120 Hours", image: skillIndiaSecurityCert.url },
+      { title: "Program in Cyber Security", date: "May 20, 2026 · 13 Hours", image: skillIndiaCyberProgramCert.url },
+      { title: "Introduction to Cyber Security", date: "May 29, 2026 · 13 Hours", image: skillIndiaIntroCert.url },
+      { title: "IoT-Network Specialist Certificate Programme", date: "May 20, 2026 · 60 Hours", image: skillIndiaIotCert.url },
+    ],
+  },
+  {
+    id: "isc2",
+    name: "ISC2 CERTIFICATE",
+    subtitle: "Foundational cybersecurity credentials",
+    accent: "from-fuchsia-500/25 to-rose-700/20",
+    certs: [
+      { title: "Cyber Security and Its Foundations", date: "ISC2" },
+    ],
+  },
+  {
+    id: "spoken",
+    name: "SPOKEN TUTORIAL — IIT BOMBAY",
+    subtitle: "Programming language training",
+    accent: "from-red-500/25 to-orange-700/20",
+    certs: [
+      { title: "Python 3.4.3 Training", date: "April 22, 2025 · 80%", image: spokenPythonCert.url },
+      { title: "C++ Training", date: "May 2, 2025 · 75%", image: spokenCppCert.url },
+      { title: "C Training", date: "April 8, 2025 · 40%", image: spokenCCert.url },
+    ],
+  },
 ];
 
 const otherCertifications = [
   "ISTE Certified",
-  "Cyber Security and Its Foundations",
-  "IBM & Infosys Springboard Encryption Course",
   "SkillRack C Programming",
   "SkillRack C++",
   "SkillRack Python",
   "Certified Yoga Practitioner",
   "First Class Typewriting",
 ];
+
 
 const GITHUB_URL = "https://github.com/kavibharathi2007";
 
