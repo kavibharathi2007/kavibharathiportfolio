@@ -459,55 +459,68 @@ function Education() {
 }
 
 function Certifications() {
+  const [openFolder, setOpenFolder] = useState<CertFolder | null>(null);
+  const [activeCert, setActiveCert] = useState<CertItem | null>(null);
+
+  useEffect(() => {
+    if (!openFolder && !activeCert) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (activeCert) setActiveCert(null);
+        else setOpenFolder(null);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [openFolder, activeCert]);
+
   return (
     <section className="relative px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           kicker="04 — Credentials"
           title="Certifications"
-          sub="Infosys Springboard virtual internship tracks & additional credentials."
+          sub="Tap a folder to explore certificates grouped by issuer."
         />
 
-        <div className="mb-10">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-5 text-center">
-            Infosys Springboard
-          </p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {springboardCerts.map((c) => (
-              <a
-                key={c.title}
-                href={c.image}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass glass-hover group block overflow-hidden rounded-2xl"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-ocean-deep">
-                  <img
-                    src={c.image}
-                    alt={`Infosys Springboard certificate — ${c.title}`}
-                    loading="lazy"
-                    className="size-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                  />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {certFolders.map((folder) => (
+            <button
+              key={folder.id}
+              type="button"
+              onClick={() => setOpenFolder(folder)}
+              className="glass glass-hover group relative overflow-hidden rounded-3xl p-6 text-left active:scale-[0.98] transition-transform touch-manipulation"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${folder.accent} opacity-60 pointer-events-none`} />
+              <div className="relative flex items-start gap-4">
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-primary/20 text-primary shrink-0">
+                  <FolderOpen className="size-7" />
                 </div>
-                <div className="p-4">
-                  <div className="flex items-start gap-2">
-                    <Award className="mt-0.5 size-4 shrink-0 text-primary" />
-                    <p className="text-sm font-semibold leading-snug">{c.title}</p>
-                  </div>
-                  <p className="mt-2 pl-6 font-mono text-[11px] text-muted-foreground">
-                    {c.date}
+                <div className="min-w-0 flex-1">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary/80">
+                    {folder.certs.length} {folder.certs.length === 1 ? "certificate" : "certificates"}
                   </p>
+                  <h3 className="mt-1 font-display text-lg font-bold leading-tight">{folder.name}</h3>
+                  <p className="mt-1.5 text-xs text-muted-foreground">{folder.subtitle}</p>
                 </div>
-              </a>
-            ))}
-          </div>
+              </div>
+              <div className="relative mt-5 flex items-center justify-between text-xs font-mono text-primary">
+                <span>Open folder</span>
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </div>
+            </button>
+          ))}
         </div>
 
-        <div>
+        <div className="mt-12">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-5 text-center">
             Other Credentials
           </p>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {otherCertifications.map((c) => (
               <div key={c} className="glass glass-hover group flex items-start gap-3 rounded-2xl p-5">
                 <Award className="mt-0.5 size-5 shrink-0 text-primary" />
@@ -517,9 +530,102 @@ function Certifications() {
           </div>
         </div>
       </div>
+
+      {openFolder && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 animate-[fade-in_0.2s_ease-out]"
+          onClick={() => setOpenFolder(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
+          <div
+            className="glass relative z-10 w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 sm:p-8 animate-[fade-in_0.3s_ease-out]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 mb-6">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+                  {openFolder.certs.length} certificates
+                </p>
+                <h3 className="mt-1 font-display text-2xl sm:text-3xl font-bold text-gradient">{openFolder.name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{openFolder.subtitle}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setOpenFolder(null)}
+                className="glass glass-hover flex size-10 items-center justify-center rounded-full shrink-0"
+                aria-label="Close"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {openFolder.certs.map((c) => (
+                <button
+                  key={c.title}
+                  type="button"
+                  onClick={() => c.image && setActiveCert(c)}
+                  className="glass glass-hover group block overflow-hidden rounded-2xl text-left active:scale-[0.98] transition-transform touch-manipulation"
+                >
+                  {c.image ? (
+                    <div className="relative aspect-[4/3] overflow-hidden bg-ocean-deep">
+                      <img
+                        src={c.image}
+                        alt={c.title}
+                        loading="lazy"
+                        className="size-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                      />
+                    </div>
+                  ) : (
+                    <div className="aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/10">
+                      <Award className="size-12 text-primary" />
+                    </div>
+                  )}
+                  <div className="p-4">
+                    <p className="text-sm font-semibold leading-snug">{c.title}</p>
+                    {c.date && (
+                      <p className="mt-1.5 font-mono text-[11px] text-muted-foreground">{c.date}</p>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeCert?.image && (
+        <div
+          className="fixed inset-0 z-[110] flex items-center justify-center p-4 animate-[fade-in_0.2s_ease-out]"
+          onClick={() => setActiveCert(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="absolute inset-0 bg-black/85 backdrop-blur-md" />
+          <button
+            type="button"
+            onClick={() => setActiveCert(null)}
+            className="absolute top-4 right-4 z-10 glass glass-hover flex size-10 items-center justify-center rounded-full"
+            aria-label="Close"
+          >
+            <X className="size-5" />
+          </button>
+          <div className="relative z-10 max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={activeCert.image}
+              alt={activeCert.title}
+              className="w-full h-auto max-h-[85vh] object-contain rounded-2xl shadow-2xl"
+            />
+            <p className="mt-3 text-center text-sm font-mono text-primary">{activeCert.title}</p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
+
 
 function Experience() {
   return (
