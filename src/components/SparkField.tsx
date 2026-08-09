@@ -10,9 +10,9 @@ export function SparkField() {
         const floatDur = 9 + Math.random() * 10;
         const twinkleDur = 3 + Math.random() * 3.5;
         const delay = -Math.random() * 8;
-        const cyan = i % 2 === 0;
-        const color = cyan ? "rgba(180, 235, 255, 0.85)" : "rgba(255, 255, 255, 0.9)";
-        const glow = cyan ? "rgba(120, 215, 255, 0.55)" : "rgba(255, 255, 255, 0.55)";
+        const red = i % 2 === 0;
+        const color = red ? "rgba(255, 90, 90, 0.85)" : "rgba(255, 255, 255, 0.9)";
+        const glow = red ? "rgba(230, 40, 40, 0.6)" : "rgba(255, 255, 255, 0.5)";
         return (
           <span
             key={i}
