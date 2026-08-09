@@ -7,7 +7,7 @@ import {
   Send, MapPin, ChevronDown, BookOpen, Lightbulb, Zap, FolderOpen, X,
 } from "lucide-react";
 
-import studentPhoto from "@/assets/student-photo.png.asset.json";
+import studentPhoto from "@/assets/student-photo-2.jpg.asset.json";
 import resumeAsset from "@/assets/resume.png.asset.json";
 import { ParticleField } from "@/components/ParticleField";
 import { SparkField } from "@/components/SparkField";
