@@ -33,7 +33,7 @@ const skills = [
   { icon: Terminal, title: "Programming", items: ["Python", "C", "C++", "HTML", "SQL"] },
   { icon: Shield, title: "Cyber Security", items: ["Network Security", "Secure Coding", "Vulnerability Assessment", "Security Fundamentals"] },
   { icon: Globe, title: "Web Development", items: ["HTML5", "CSS3", "Responsive Design"] },
-  { icon: Code2, title: "Tools", items: ["GitHub", "VS Code", "Canva"] },
+  { icon: Code2, title: "Tools", items: ["Hack The Box", "TryHackMe", "Nmap", "Kali Linux", "GitHub", "VS Code", "Canva"] },
   { icon: Cpu, title: "Core Concepts", items: ["OOPs", "DBMS", "Data Structures", "Computer Networks", "SDLC"] },
   { icon: Network, title: "Focus Areas", items: ["Ethical Hacking", "Python Dev", "Front-End", "Networking"] },
 ];
@@ -126,9 +126,9 @@ const certFolders: CertFolder[] = [
 
 const otherCertifications = [
   "ISTE Certified",
-  "SkillRack C Programming",
-  "SkillRack C++",
-  "SkillRack Python",
+  "Cisco Networking Certification — Cisco Networking Academy",
+  "Cisco Junior Cyber Analyst Certificate — Cisco Networking Academy",
+  "Student of OWASP Chapter",
   "Certified Yoga Practitioner",
   "First Class Typewriting",
 ];
@@ -141,6 +141,7 @@ const internships = [
   { role: "Python Developer Intern (Virtual)", org: "Infosys Springboard", desc: "Virtual internship focused on Python programming, OOP, database fundamentals, and software engineering best practices. Completed multiple Infosys Springboard certification tracks in the Python domain.", repo: "https://github.com/kavibharathi2007" },
   { role: "Web Development Intern", org: "SkillCraft Technologies", desc: "Built To-Do List and Resume Generator projects using HTML and CSS.", repo: "https://github.com/kavibharathi2007" },
   { role: "Python Developer Intern", org: "ShadowFox", desc: "Python development and practical project implementation.", repo: "https://github.com/kavibharathi2007" },
+  { role: "Cyber Security Intern", org: "ShadowFox", desc: "Hands-on cyber security tasks covering reconnaissance with Nmap, Kali Linux tooling, vulnerability assessment, and practical labs on Hack The Box and TryHackMe.", repo: "https://github.com/kavibharathi2007" },
 ];
 
 const projects = [
@@ -163,6 +164,7 @@ const achievements = [
   { value: "🥇", label: "State-Level Throwball Winner" },
   { value: "🏆", label: "College-Level Throwball Winner" },
   { value: "8+", label: "Certifications Earned" },
+  { value: "🛡️", label: "Student of SREC OWASP Chapter" },
 ];
 
 const navLinks = [
