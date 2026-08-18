@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
+import { useForm } from "@formspree/react";
 import {
   Shield, Code2, Network, Lock, Github, Linkedin, Mail, Phone, Download,
   ArrowRight, ExternalLink, Award, GraduationCap, Briefcase, Sparkles,
@@ -132,6 +133,7 @@ const otherCertifications = [
 
 
 const GITHUB_URL = "https://github.com/kavibharathi2007";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mljrpzna";
 
 const internships = [
   { role: "Cyber Security Intern", org: "Code Alpha", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection.", repo: "https://github.com/kavibharathi2007" },
@@ -737,7 +739,15 @@ function Extras() {
 }
 
 function Contact() {
+  const [state, handleSubmit] = useForm(FORMSPREE_ENDPOINT);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+
+  useEffect(() => {
+    if (state.succeeded) {
+      setForm({ name: "", email: "", subject: "", message: "" });
+    }
+  }, [state.succeeded]);
+
   return (
     <section id="contact" className="relative px-6 py-24">
       <div className="mx-auto max-w-6xl">
@@ -766,17 +776,18 @@ function Contact() {
             })}
           </div>
           <form
-            onSubmit={(e) => { e.preventDefault(); alert("Thanks! I'll get back to you soon."); }}
+            onSubmit={handleSubmit}
             className="space-y-4"
           >
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Name" value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
-              <Field label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
+              <Field name="name" label="Name" value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
+              <Field name="email" label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
             </div>
-            <Field label="Subject" value={form.subject} onChange={(v) => setForm({ ...form, subject: v })} />
+            <Field name="subject" label="Subject" value={form.subject} onChange={(v) => setForm({ ...form, subject: v })} />
             <div>
               <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Message</label>
               <textarea
+                name="message"
                 required
                 rows={5}
                 maxLength={1000}
@@ -785,8 +796,18 @@ function Contact() {
                 className="mt-1 w-full rounded-xl border border-border/60 bg-input px-4 py-3 text-sm outline-none focus:border-primary/70 transition"
               />
             </div>
-            <button type="submit" className="btn-cyber w-full justify-center">
-              Send Message <Send className="size-4" />
+            {state.succeeded && (
+              <div aria-live="polite" className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-primary">
+                Message sent successfully! I'll get back to you soon.
+              </div>
+            )}
+            {state.errors && state.errors.length > 0 && (
+              <div aria-live="polite" className="rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive-foreground">
+                Something went wrong. Please try again later.
+              </div>
+            )}
+            <button type="submit" disabled={state.submitting} className="btn-cyber w-full justify-center">
+              {state.submitting ? "Sending..." : "Send Message"} <Send className="size-4" />
             </button>
           </form>
         </div>
@@ -795,11 +816,12 @@ function Contact() {
   );
 }
 
-function Field({ label, value, onChange, type = "text" }: { label: string; value: string; onChange: (v: string) => void; type?: string }) {
+function Field({ name, label, value, onChange, type = "text" }: { name: string; label: string; value: string; onChange: (v: string) => void; type?: string }) {
   return (
     <div>
       <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{label}</label>
       <input
+        name={name}
         required
         type={type}
         maxLength={255}
