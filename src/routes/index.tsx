@@ -134,7 +134,7 @@ const otherCertifications = [
 
 const GITHUB_URL = "https://github.com/kavibharathi2007";
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mljrpzna";
-const FORMSPREE_FORM_ID = FORMSPREE_ENDPOINT.split("/").pop();
+const FORMSPREE_FORM_ID = FORMSPREE_ENDPOINT.split("/").pop() ?? "mljrpzna";
 
 const internships = [
   { role: "Cyber Security Intern", org: "Code Alpha", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection.", repo: "https://github.com/kavibharathi2007" },
