@@ -801,7 +801,7 @@ function Contact() {
                 Message sent successfully! I'll get back to you soon.
               </div>
             )}
-            {state.errors && state.errors.length > 0 && (
+            {state.errors && (
               <div aria-live="polite" className="rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive-foreground">
                 Something went wrong. Please try again later.
               </div>
