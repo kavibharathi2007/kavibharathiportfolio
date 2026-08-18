@@ -134,6 +134,7 @@ const otherCertifications = [
 
 const GITHUB_URL = "https://github.com/kavibharathi2007";
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mljrpzna";
+const FORMSPREE_FORM_ID = FORMSPREE_ENDPOINT.split("/").pop();
 
 const internships = [
   { role: "Cyber Security Intern", org: "Code Alpha", desc: "Secure coding, networking fundamentals, vulnerability awareness, and system protection.", repo: "https://github.com/kavibharathi2007" },
@@ -739,7 +740,7 @@ function Extras() {
 }
 
 function Contact() {
-  const [state, handleSubmit] = useForm(FORMSPREE_ENDPOINT);
+  const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
   useEffect(() => {
